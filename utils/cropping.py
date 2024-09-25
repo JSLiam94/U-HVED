@@ -34,8 +34,8 @@ OUTPUT_AFFINE = np.array(
      [0, -1, 0, 239],
      [0, 0, 1, 0],
      [0, 0, 0, 1]])
-mod_names17 = ['flair', 't1', 't1ce', 't2']
-mod_names15 = ['Flair', 'T1', 'T1c', 'T2']
+mod_names17 = ['t1c','t1n','t2f','t2w']
+mod_names15 = ['t1c','t1n','t2f','t2w']
 
 labels=[1,2,4]
 
@@ -111,7 +111,7 @@ def load_scans_BRATS(pat_folder, with_seg=False):
 
 
 def save_scans_BRATS(out_path, pat_name, img_data, seg_data=None):
-    save_mod_names = ['Flair', 'T1', 'T1c', 'T2']
+    save_mod_names = ['t1c','t1n','t2f','t2w']
     save_seg_name = 'Label'
     assert img_data.shape[3] == 4
     for mod_i in range(len(save_mod_names)):
@@ -128,7 +128,7 @@ def save_scans_BRATS(out_path, pat_name, img_data, seg_data=None):
         nibabel.save(seg_data_nii, save_path)
 
 
-def main(in_path, out_path, pat_category_list=('HGG', 'LGG'), crop=False):
+def main(in_path, out_path, pat_category_list=('BraTS-GLI-', 'BraTS-GLI-'), crop=False):
     for pat_cat in pat_category_list:
         pat_ID = 0
         for pat_folder_name in os.listdir(os.path.join(in_path, pat_cat)):

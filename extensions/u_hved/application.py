@@ -37,7 +37,7 @@ from multi_modal_application import MultiModalApplication
 
 
 SUPPORTED_INPUT = set(['image', 'label', 'weight', 'sampler', 'inferred', 'choices', 'output_mod'])
-MODALITIES_img = ['T1', 'T1c', 'T2', 'Flair']
+MODALITIES_img = ['t1c','t1n','t2f','t2w']
 
 np.random.seed(0)
 tf.set_random_seed(1)
