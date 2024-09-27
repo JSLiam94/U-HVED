@@ -1,5 +1,5 @@
 import tensorflow as tf
-
+import sys
 from niftynet.application.base_application import BaseApplication
 from niftynet.engine.application_factory import \
     ApplicationNetFactory, InitializerFactory, OptimiserFactory
@@ -149,21 +149,25 @@ class U_HVEDApplication(MultiModalApplication):
                          self.initialise_grid_aggregator),
         }
 
-
     def set_iteration_update(self, iteration_message):
-
 
         if self.is_training:
             choices = []
             nb_choices = np.random.randint(4)
-            choices = np.random.choice(4, nb_choices+1, replace=False, p=[1/4,1/4,1/4,1/4])
+            choices = np.random.choice(4, nb_choices + 1, replace=False, p=[1 / 4, 1 / 4, 1 / 4, 1 / 4])
             choices = [True if k in choices else False for k in range(4)]
             iteration_message.data_feed_dict[self.choices] = choices
 
             n_iter = iteration_message.current_iter
             decay = 4
             leng = 10
-            iteration_message.data_feed_dict[self.lr] = self.action_param.lr /(decay**int( n_iter/leng ))
+
+            # 添加检查以避免过大的指数
+            max_index = sys.maxsize  # 系统支持的最大整数大小
+            adjusted_index = min(int(n_iter / leng), max_index)
+
+            # 计算学习率
+            iteration_message.data_feed_dict[self.lr] = self.action_param.lr / (decay ** adjusted_index)
 
     def connect_data_and_network(self,
                                  outputs_collector=None,
@@ -193,7 +197,7 @@ class U_HVEDApplication(MultiModalApplication):
             print('hellllo')
             print(image)
             net_img, post_param = self.net({MODALITIES_img[k]: tf.expand_dims(image_unstack[k],-1) for k in range(4)}, self.choices, is_training=self.is_training)
-
+            print(net_img)
             net_seg = net_img['seg']
             net_img = tf.concat([net_img[mod] for mod in MODALITIES_img],axis=-1)
             

@@ -5,7 +5,7 @@ import argparse
 import sys
 
 
-MODALITIES_img = ['T1', 'T1c', 'T2', 'Flair']
+MODALITIES_img = ['t1c','t1n','t2f','t2w']
 
 cwd = os.getcwd()
 #sys.path.append(os.path.join(cwd,'extensions/'))
@@ -95,9 +95,9 @@ if __name__=="__main__":
 
     args = parser.parse_args()
     assert sum([k!=False for k in [args.T1_input, args.T1c_input, args.T2_input, args.Flair_input]]), 'one modality has to been at list provided'
-    assert args.output_mod in ['T1', 'T1c', 'T2', 'Flair', 'seg'], "output_mod has to be in ['T1', 'T1c', 'T2', 'Flair', 'seg']"
+    assert args.output_mod in ['t1c','t1n','t2f','t2w'], "output_mod has to be in ['T1', 'T1c', 'T2', 'Flair', 'seg']"
 
-    modality_path = {'T1': args.T1_input, 'T1c': args.T1c_input, 'T2': args.T2_input, 'Flair':args.Flair_input}
+    modality_path = {'t1c': args.T1_input, 't1n': args.T1c_input, 't2f': args.T2_input, 't2w':args.Flair_input}
 
     change_config(args.Network, modality_path, args.output_mod)
 

@@ -25,7 +25,7 @@ from niftynet.layer.downsample import DownSampleLayer as Pooling
 from niftynet.layer.linear_resize import LinearResizeLayer
 
 
-MODALITIES = ['T1', 'T1c', 'T2', 'Flair', 'seg']
+MODALITIES = ['t1c','t1n','t2f','t2w','seg']
 
 HIDDEN_SPACE = 512
 
