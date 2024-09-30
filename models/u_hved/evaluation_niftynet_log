@@ -1,0 +1,53 @@
+INFO:niftynet:2024-09-29 22:46:28,952: Import [U_HVEDApplication] from /root/autodl-tmp/JS/U-HVED/extensions/u_hved/application.py.
+INFO:niftynet:2024-09-29 22:46:28,952: starting segmentation application
+INFO:niftynet:2024-09-29 22:46:28,952: `csv_file = ` not found, writing to "/root/autodl-tmp/JS/U-HVED/models/u_hved/t1n.csv" instead.
+INFO:niftynet:2024-09-29 22:46:28,952: [t1n] search file folders, writing csv file /root/autodl-tmp/JS/U-HVED/models/u_hved/t1n.csv
+INFO:niftynet:2024-09-29 22:46:28,961: `csv_file = ` not found, writing to "/root/autodl-tmp/JS/U-HVED/models/u_hved/t1c.csv" instead.
+INFO:niftynet:2024-09-29 22:46:28,961: [t1c] search file folders, writing csv file /root/autodl-tmp/JS/U-HVED/models/u_hved/t1c.csv
+INFO:niftynet:2024-09-29 22:46:28,967: `csv_file = ` not found, writing to "/root/autodl-tmp/JS/U-HVED/models/u_hved/t2f.csv" instead.
+INFO:niftynet:2024-09-29 22:46:28,967: [t2f] search file folders, writing csv file /root/autodl-tmp/JS/U-HVED/models/u_hved/t2f.csv
+INFO:niftynet:2024-09-29 22:46:28,973: `csv_file = ` not found, writing to "/root/autodl-tmp/JS/U-HVED/models/u_hved/t2w.csv" instead.
+INFO:niftynet:2024-09-29 22:46:28,973: [t2w] search file folders, writing csv file /root/autodl-tmp/JS/U-HVED/models/u_hved/t2w.csv
+INFO:niftynet:2024-09-29 22:46:28,978: `csv_file = ` not found, writing to "/root/autodl-tmp/JS/U-HVED/models/u_hved/label_b.csv" instead.
+INFO:niftynet:2024-09-29 22:46:28,978: [label_b] search file folders, writing csv file /root/autodl-tmp/JS/U-HVED/models/u_hved/label_b.csv
+INFO:niftynet:2024-09-29 22:46:28,983: [inferred] search file folders, writing csv file /root/autodl-tmp/JS/U-HVED/models/u_hved/output/inferred.csv
+INFO:niftynet:2024-09-29 22:46:28,989: 
+
+Number of subjects 4, input section names: ['subject_id', 't1n', 't1c', 't2f', 't2w', 'label_b', 'inferred']
+-- using all subjects (without data partitioning).
+
+INFO:niftynet:2024-09-29 22:46:29,063: Image reader: loading 4 subjects from sections ('t1c', 't1n', 't2f', 't2w') as input [image]
+INFO:niftynet:2024-09-29 22:46:29,063: Image reader: loading 4 subjects from sections ('label_b',) as input [label]
+INFO:niftynet:2024-09-29 22:46:29,063: Image reader: loading 4 subjects from sections ('inferred',) as input [inferred]
+INFO:niftynet:2024-09-29 22:46:29,065: training normalisation histogram references for image:{'t2f', 't2w', 't1n', 't1c'}, using 4 subjects
+INFO:niftynet:2024-09-29 22:47:00,708: Cleaning up...
+INFO:niftynet:2024-09-29 22:47:00,708: U_HVEDApplication stopped (time in second 25.04).
+INFO:niftynet:2024-09-29 23:07:06,990: Import [U_HVEDApplication] from /root/autodl-tmp/JS/U-HVED/extensions/u_hved/application.py.
+INFO:niftynet:2024-09-29 23:07:06,990: starting segmentation application
+INFO:niftynet:2024-09-29 23:07:06,990: `csv_file = ` not found, writing to "/root/autodl-tmp/JS/U-HVED/models/u_hved/t1n.csv" instead.
+INFO:niftynet:2024-09-29 23:07:06,991: Overwriting existing: "/root/autodl-tmp/JS/U-HVED/models/u_hved/t1n.csv".
+INFO:niftynet:2024-09-29 23:07:06,991: [t1n] search file folders, writing csv file /root/autodl-tmp/JS/U-HVED/models/u_hved/t1n.csv
+INFO:niftynet:2024-09-29 23:07:07,000: `csv_file = ` not found, writing to "/root/autodl-tmp/JS/U-HVED/models/u_hved/t1c.csv" instead.
+INFO:niftynet:2024-09-29 23:07:07,000: Overwriting existing: "/root/autodl-tmp/JS/U-HVED/models/u_hved/t1c.csv".
+INFO:niftynet:2024-09-29 23:07:07,000: [t1c] search file folders, writing csv file /root/autodl-tmp/JS/U-HVED/models/u_hved/t1c.csv
+INFO:niftynet:2024-09-29 23:07:07,006: `csv_file = ` not found, writing to "/root/autodl-tmp/JS/U-HVED/models/u_hved/t2f.csv" instead.
+INFO:niftynet:2024-09-29 23:07:07,006: Overwriting existing: "/root/autodl-tmp/JS/U-HVED/models/u_hved/t2f.csv".
+INFO:niftynet:2024-09-29 23:07:07,007: [t2f] search file folders, writing csv file /root/autodl-tmp/JS/U-HVED/models/u_hved/t2f.csv
+INFO:niftynet:2024-09-29 23:07:07,012: `csv_file = ` not found, writing to "/root/autodl-tmp/JS/U-HVED/models/u_hved/t2w.csv" instead.
+INFO:niftynet:2024-09-29 23:07:07,012: Overwriting existing: "/root/autodl-tmp/JS/U-HVED/models/u_hved/t2w.csv".
+INFO:niftynet:2024-09-29 23:07:07,012: [t2w] search file folders, writing csv file /root/autodl-tmp/JS/U-HVED/models/u_hved/t2w.csv
+INFO:niftynet:2024-09-29 23:07:07,018: `csv_file = ` not found, writing to "/root/autodl-tmp/JS/U-HVED/models/u_hved/label_b.csv" instead.
+INFO:niftynet:2024-09-29 23:07:07,018: Overwriting existing: "/root/autodl-tmp/JS/U-HVED/models/u_hved/label_b.csv".
+INFO:niftynet:2024-09-29 23:07:07,018: [label_b] search file folders, writing csv file /root/autodl-tmp/JS/U-HVED/models/u_hved/label_b.csv
+INFO:niftynet:2024-09-29 23:07:07,024: [inferred] search file folders, writing csv file /root/autodl-tmp/JS/U-HVED/models/u_hved/output/inferred.csv
+INFO:niftynet:2024-09-29 23:07:07,030: 
+
+Number of subjects 4, input section names: ['subject_id', 't1n', 't1c', 't2f', 't2w', 'label_b', 'inferred']
+-- using all subjects (without data partitioning).
+
+INFO:niftynet:2024-09-29 23:07:07,104: Image reader: loading 4 subjects from sections ('t1c', 't1n', 't2f', 't2w') as input [image]
+INFO:niftynet:2024-09-29 23:07:07,104: Image reader: loading 4 subjects from sections ('label_b',) as input [label]
+INFO:niftynet:2024-09-29 23:07:07,104: Image reader: loading 4 subjects from sections ('inferred',) as input [inferred]
+INFO:niftynet:2024-09-29 23:07:07,106: normalisation histogram reference models ready for image:('t1c', 't1n', 't2f', 't2w')
+INFO:niftynet:2024-09-29 23:07:33,036: Cleaning up...
+INFO:niftynet:2024-09-29 23:07:33,037: U_HVEDApplication stopped (time in second 25.93).

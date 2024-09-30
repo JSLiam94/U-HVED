@@ -33,7 +33,7 @@ from itertools import chain, combinations
 import random
 import numpy as np
 from multi_modal_application import MultiModalApplication
-
+import math
 
 
 SUPPORTED_INPUT = set(['image', 'label', 'weight', 'sampler', 'inferred', 'choices', 'output_mod'])
@@ -150,7 +150,6 @@ class U_HVEDApplication(MultiModalApplication):
         }
 
     def set_iteration_update(self, iteration_message):
-
         if self.is_training:
             choices = []
             nb_choices = np.random.randint(4)
@@ -162,12 +161,23 @@ class U_HVEDApplication(MultiModalApplication):
             decay = 4
             leng = 10
 
-            # 添加检查以避免过大的指数
-            max_index = sys.maxsize  # 系统支持的最大整数大小
+            # 设置一个合理的最大指数值
+            max_index = 100  
+
+            # 计算调整后的指数
             adjusted_index = min(int(n_iter / leng), max_index)
 
-            # 计算学习率
-            iteration_message.data_feed_dict[self.lr] = self.action_param.lr / (decay ** adjusted_index)
+            # 记录调整后的指数值
+            #logging.info(f"Adjusted index: {adjusted_index}")
+
+            # 使用对数运算来计算学习率
+            log_lr = math.log(self.action_param.lr) - adjusted_index * math.log(decay)
+
+            # 记录计算的学习率值
+            lr = math.exp(log_lr)
+            #logging.info(f"Calculated learning rate: {lr}")
+
+            iteration_message.data_feed_dict[self.lr] = lr
 
     def connect_data_and_network(self,
                                  outputs_collector=None,

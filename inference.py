@@ -3,6 +3,8 @@ import os
 import configparser
 import argparse
 import sys
+from extensions.u_hved.application import U_HVEDApplication 
+from extensions.multi_modal_application import MultiModalApplication
 
 
 MODALITIES_img = ['t1c','t1n','t2f','t2w']
@@ -87,15 +89,15 @@ if __name__=="__main__":
     
 #     parser.add_argument('--Warmup', '-w', help='Use Warmup or no', default="False")
     parser.add_argument('--Network', '-n', help='Choice of the network. Either u_hemis or u_hved', default="u_hved")
-    parser.add_argument('--T1_input', '-t1', help='Path to the T1 scan', default=False)
-    parser.add_argument('--T1c_input', '-t1c', help='Path to the T1c scan', default=False)
-    parser.add_argument('--T2_input', '-t2', help='Path to the T2 scan', default=False)
-    parser.add_argument('--Flair_input', '-fl', help='Path to the Flair scan', default=False)
+    parser.add_argument('--T1_input', '-t1c', help='Path to the T1 scan', default=False)
+    parser.add_argument('--T1c_input', '-t1n', help='Path to the T1c scan', default=False)
+    parser.add_argument('--T2_input', '-t2f', help='Path to the T2 scan', default=False)
+    parser.add_argument('--Flair_input', '-t2w', help='Path to the Flair scan', default=False)
     parser.add_argument('--output_mod', '-o', help='Choice of the output: seg, T1, T1c, T2 or Flair', default="seg")
 
     args = parser.parse_args()
     assert sum([k!=False for k in [args.T1_input, args.T1c_input, args.T2_input, args.Flair_input]]), 'one modality has to been at list provided'
-    assert args.output_mod in ['t1c','t1n','t2f','t2w'], "output_mod has to be in ['T1', 'T1c', 'T2', 'Flair', 'seg']"
+    assert args.output_mod in ['t1c','t1n','t2f','t2w','seg'], "output_mod has to be in ['t1c','t1n','t2f','t2w','seg']"
 
     modality_path = {'t1c': args.T1_input, 't1n': args.T1c_input, 't2f': args.T2_input, 't2w':args.Flair_input}
 

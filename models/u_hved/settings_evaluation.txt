@@ -1,0 +1,153 @@
+Input params at 2024-09-29 23:07:06.
+[CUSTOM]
+-- num_classes: 5
+-- output_prob: False
+-- label_normalisation: False
+-- softmax: True
+-- min_sampling_ratio: 0
+-- compulsory_labels: (0, 1)
+-- rand_samples: 0
+-- min_numb_labels: 1
+-- proba_connect: True
+-- evaluation_units: foreground
+-- sampler: ()
+-- label: ('label_b',)
+-- inferred: ()
+-- image: ('t1c', 't1n', 't2f', 't2w')
+-- weight: ()
+-- choices: ()
+-- output_mod: ()
+-- name: u_hved.application.U_HVEDApplication
+[CONFIG_FILE]
+-- path: /root/autodl-tmp/JS/U-HVED/extensions/u_hved/un_eval.ini
+[T1N]
+-- csv_file: 
+-- path_to_search: ./data/BRATS2024/
+-- filename_contains: ('t1n',)
+-- filename_not_contains: ('t1c',)
+-- filename_removefromid: 
+-- interp_order: 3
+-- loader: None
+-- pixdim: (1.0, 1.0, 1.0)
+-- axcodes: ('R', 'A', 'S')
+-- spatial_window_size: (112, 112, 112)
+[T1C]
+-- csv_file: 
+-- path_to_search: ./data/BRATS2024/
+-- filename_contains: ('t1c',)
+-- filename_not_contains: ()
+-- filename_removefromid: 
+-- interp_order: 3
+-- loader: None
+-- pixdim: (1.0, 1.0, 1.0)
+-- axcodes: ('R', 'A', 'S')
+-- spatial_window_size: (112, 112, 112)
+[T2F]
+-- csv_file: 
+-- path_to_search: ./data/BRATS2024/
+-- filename_contains: ('t2f',)
+-- filename_not_contains: ()
+-- filename_removefromid: 
+-- interp_order: 3
+-- loader: None
+-- pixdim: (1.0, 1.0, 1.0)
+-- axcodes: ('R', 'A', 'S')
+-- spatial_window_size: (112, 112, 112)
+[T2W]
+-- csv_file: 
+-- path_to_search: ./data/BRATS2024/
+-- filename_contains: ('t2w',)
+-- filename_not_contains: ()
+-- filename_removefromid: 
+-- interp_order: 3
+-- loader: None
+-- pixdim: (1.0, 1.0, 1.0)
+-- axcodes: ('R', 'A', 'S')
+-- spatial_window_size: (112, 112, 112)
+[LABEL_B]
+-- csv_file: 
+-- path_to_search: ./data/BRATS2024/
+-- filename_contains: ('Label',)
+-- filename_not_contains: ()
+-- filename_removefromid: 
+-- interp_order: 0
+-- loader: None
+-- pixdim: (1.0, 1.0, 1.0)
+-- axcodes: ('R', 'A', 'S')
+-- spatial_window_size: (112, 112, 112)
+[SYSTEM]
+-- cuda_devices: 0
+-- num_threads: 1
+-- num_gpus: 1
+-- model_dir: /root/autodl-tmp/JS/U-HVED/models/u_hved
+-- dataset_split_file: ./dataset_split.csv
+-- event_handler: ('model_saver', 'model_restorer', 'sampler_threading', 'apply_gradients', 'output_interpreter', 'console_logger', 'tensorboard_logger')
+-- iteration_generator: iteration_generator
+-- action: evaluation
+[NETWORK]
+-- name: u_hved.u_hved_net.U_HVED
+-- activation_function: relu
+-- batch_size: 1
+-- smaller_final_batch_mode: pad
+-- decay: 1e-05
+-- reg_type: L2
+-- volume_padding_size: (10, 10, 10)
+-- volume_padding_mode: minimum
+-- window_sampling: uniform
+-- queue_length: 30
+-- multimod_foreground_type: and
+-- histogram_ref_file: hist.txt
+-- norm_type: percentile
+-- cutoff: (0.001, 0.999)
+-- foreground_type: mean_plus
+-- normalisation: True
+-- whitening: True
+-- normalise_foreground_only: True
+-- weight_initializer: he_normal
+-- bias_initializer: zeros
+-- keep_prob: 1.0
+-- weight_initializer_args: {}
+-- bias_initializer_args: {}
+[TRAINING]
+-- optimiser: adam
+-- sample_per_volume: 32
+-- rotation_angle: ()
+-- rotation_angle_x: ()
+-- rotation_angle_y: ()
+-- rotation_angle_z: ()
+-- scaling_percentage: (-10.0, 10.0)
+-- antialiasing: True
+-- bias_field_range: ()
+-- bf_order: 3
+-- random_flipping_axes: (0, 1, 2)
+-- do_elastic_deformation: False
+-- num_ctrl_points: 4
+-- deformation_sigma: 15
+-- proportion_to_deform: 0.5
+-- lr: 0.001
+-- loss_type: Jaccard
+-- starting_iter: 0
+-- save_every_n: 2000
+-- tensorboard_every_n: 20
+-- max_iter: 60000
+-- max_checkpoints: 20
+-- validation_every_n: 10
+-- validation_max_iter: 1
+-- exclude_fraction_for_validation: 0.1
+-- exclude_fraction_for_inference: 0.1
+-- vars_to_restore: 
+-- vars_to_freeze: 
+[INFERENCE]
+-- spatial_window_size: (140, 140, 140)
+-- inference_iter: 60000
+-- dataset_to_infer: 
+-- save_seg_dir: ./output
+-- output_postfix: _niftynet_out
+-- output_interp_order: 0
+-- border: (10, 10, 10)
+[EVALUATION]
+-- evaluations: dice,jaccard,false_positive_rate,positive_predictive_values,n_pos_ref,n_pos_seg
+-- save_csv_dir: ./output/val
+-- label: label_b
+-- evaluation_units: foreground
+-- choices: True,False,False,False
